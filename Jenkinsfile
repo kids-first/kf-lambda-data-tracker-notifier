@@ -1,5 +1,5 @@
 @Library("kids-first/aws-infra-jenkins-shared-libraries") _
 lambda_jenkinsfile {
-    projectName = "kf-lambda-releasenotifier"
-    prefixName = "kf-lambda-releasenotifier"
+    projectName = "kf-lambda-data-tracker-notifier"
+    prefixName = "kf-lambda-data-tracker-notifier"
 }
