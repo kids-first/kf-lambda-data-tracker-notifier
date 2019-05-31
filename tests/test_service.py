@@ -6,4 +6,4 @@ def test_handler():
     """
     Test the service handler
     """
-    service.handler({}, {})
+    pass
