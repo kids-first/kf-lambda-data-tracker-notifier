@@ -246,7 +246,8 @@ class UserNotifier:
             if len(messages) > 1:
                 blocks.extend(messages)
 
-        self.send_message(user, blocks)
+        if len(blocks) > 1:
+            self.send_message(user, blocks)
 
 
 def handler(event, context):
@@ -266,3 +267,4 @@ def handler(event, context):
 
     notifier.daily_notifications()
     logger.info(f"Took {time.time() - start}s to run notifications")
+
