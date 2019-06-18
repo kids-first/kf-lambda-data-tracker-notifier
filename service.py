@@ -143,7 +143,7 @@ class UserNotifier:
         # Header
         blocks.append(
             study_header(
-                self.format_url(f"{self.url}/study/{study_id}"),
+                self.format_url(f"{self.url}/study/{study_id}/documents"),
                 study_id,
                 study_name,
             )
@@ -238,7 +238,9 @@ class UserNotifier:
         """
         Send a user notifications for their interested studies
         """
-        summary = summary_header(self.format_url(self.url), self.date)
+        summary = summary_header(
+            self.format_url(f"{self.url}/profile"), self.date
+        )
         blocks = [summary]
 
         for study in user["studySubscriptions"]["edges"]:
