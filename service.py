@@ -143,7 +143,7 @@ class UserNotifier:
         # Header
         blocks.append(
             study_header(
-                self.format_url(f"{self.url}/study/{study_id}"),
+                self.format_url(f"{self.url}/study/{study_id}/documents"),
                 study_id,
                 study_name,
             )
