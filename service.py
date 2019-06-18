@@ -143,7 +143,7 @@ class UserNotifier:
         # Header
         blocks.append(
             study_header(
-                self.format_url(f"{self.url}/studies/{study_id}"),
+                self.format_url(f"{self.url}/study/{study_id}"),
                 study_id,
                 study_name,
             )
@@ -203,7 +203,7 @@ class UserNotifier:
             else:
                 header = document_header(
                     self.format_url(
-                        f"{self.url}/studies/{study_id}/documents/{file_id}"
+                        f"{self.url}/study/{study_id}/documents/{file_id}"
                     ),
                     file_id,
                     file_name,
