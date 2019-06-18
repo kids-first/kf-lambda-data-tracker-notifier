@@ -126,6 +126,7 @@ class UserNotifier:
         resp = self.session.post(
             "https://slack.com/api/chat.postMessage", json=message
         )
+        logger.info(resp.json())
 
     def make_study_message(self, study):
         """
@@ -133,8 +134,6 @@ class UserNotifier:
         """
         if study["kfId"] in self.study_messages:
             return self.study_messages[study["kfId"]]
-
-        logger.info(f"Building message for study {study['kfId']}")
 
         study_id = study["kfId"]
         study_name = study["name"]
