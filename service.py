@@ -171,15 +171,19 @@ class UserNotifier:
                 file_names[file_id] = ev["node"]["file"]["name"]
 
             user = ev["node"].get("user")
+            picture = None
             if user:
                 author = ev["node"]["user"].get("username", "Anonymous user")
                 picture = ev["node"]["user"].get(
                     "picture",
-                    "https://api.slack.com/img/blocks/bkb_template_images/profile_3.png",
+                    "https://www.adherehealth.com/wp-content/uploads/2018/09/avatar.jpg",
                 )
             else:
                 author = "Anonymous user"
-                picture = "https://api.slack.com/img/blocks/bkb_template_images/profile_3.png"
+
+            if picture is None or len(picture) == 0:
+                picture = "https://www.adherehealth.com/wp-content/uploads/2018/09/avatar.jpg"
+
             dt = datetime.datetime.strptime(
                 ev["node"]["createdAt"], "%Y-%m-%dT%H:%M:%S.%f+00:00"
             )
