@@ -2,4 +2,5 @@
 lambda_jenkinsfile {
     projectName = "kf-lambda-data-tracker-notifier"
     prefixName = "kf-lambda-data-tracker-notifier"
+    agentLabel = "terraform-testing"
 }
