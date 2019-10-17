@@ -163,9 +163,13 @@ class UserNotifier:
                 ev["node"]["eventType"] == "SF_DEL"
                 or ev["node"]["file"] is None
             ):
-                file_id = re.match(
+                raw_list = re.match(
                     r".*(SF_[A-Z0-9]{8}).*", ev["node"]["description"]
-                ).group(1)
+                )
+                if raw_list is None:
+                    file_id = None
+                else:
+                    file_id = raw_list.group(1)
             else:
                 file_id = ev["node"]["file"]["kfId"]
                 file_names[file_id] = ev["node"]["file"]["name"]
