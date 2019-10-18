@@ -163,23 +163,31 @@ class UserNotifier:
                 ev["node"]["eventType"] == "SF_DEL"
                 or ev["node"]["file"] is None
             ):
-                file_id = re.match(
+                raw_list = re.match(
                     r".*(SF_[A-Z0-9]{8}).*", ev["node"]["description"]
-                ).group(1)
+                )
+                if raw_list is None:
+                    file_id = None
+                else:
+                    file_id = raw_list.group(1)
             else:
                 file_id = ev["node"]["file"]["kfId"]
                 file_names[file_id] = ev["node"]["file"]["name"]
 
             user = ev["node"].get("user")
+            picture = None
             if user:
                 author = ev["node"]["user"].get("username", "Anonymous user")
                 picture = ev["node"]["user"].get(
                     "picture",
-                    "https://api.slack.com/img/blocks/bkb_template_images/profile_3.png",
+                    "https://www.adherehealth.com/wp-content/uploads/2018/09/avatar.jpg",
                 )
             else:
                 author = "Anonymous user"
-                picture = "https://api.slack.com/img/blocks/bkb_template_images/profile_3.png"
+
+            if picture is None or len(picture) == 0:
+                picture = "https://www.adherehealth.com/wp-content/uploads/2018/09/avatar.jpg"
+
             dt = datetime.datetime.strptime(
                 ev["node"]["createdAt"], "%Y-%m-%dT%H:%M:%S.%f+00:00"
             )

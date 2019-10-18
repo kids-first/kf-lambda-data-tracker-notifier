@@ -12,8 +12,8 @@ query (
         studyKfId: $studyId,
         fileKfId: $fileId,
         versionKfId: $versionId,
-        createdAt_Gt: $createdAt_Gt,
-        createdAt_Lt: $createdAt_Lt,
+        createdAfter: $createdAt_Gt,
+        createdBefore: $createdAt_Lt,
         username: $username,
         eventType: $eventType,
     ) {
