@@ -12,6 +12,10 @@ from collections import defaultdict
 from queries import ALL_EVENTS, ALL_USERS
 from components import summary_header, study_header, document_header, event
 
+import boto3
+
+client = boto3.client("ses")
+
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 

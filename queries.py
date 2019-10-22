@@ -49,6 +49,8 @@ allUsers {
 edges {
   node {
     id
+    email
+    emailNotify
     username
     slackNotify
     slackMemberId
